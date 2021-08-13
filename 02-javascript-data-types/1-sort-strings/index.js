@@ -7,12 +7,10 @@
 export function sortStrings(arr, order) {
 
   const newSortArr = arr.slice();
-  
+
   const collator = new Intl.Collator(['ru', 'en'], {sensitivity: 'case', caseFirst: 'upper'});
-  
-  const res = newSortArr.sort((a, b) => collator.compare(a, b));
-  if (order === 'desc') {
-    res.reverse();
-  }  
+
+  const res = newSortArr.sort((a, b) => ((order === 'desc') ? -1 : 1) * collator.compare(a, b));
+
   return res;
 }
