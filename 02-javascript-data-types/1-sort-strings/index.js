@@ -6,7 +6,7 @@
  */
 export function sortStrings(arr, order) {
 
-  const newSortArr = arr.slice();
+  const newSortArr = [...arr];
 
   const collator = new Intl.Collator(['ru', 'en'], {sensitivity: 'case', caseFirst: 'upper'});
 
