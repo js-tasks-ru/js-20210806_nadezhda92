@@ -4,7 +4,6 @@ export default class ColumnChart {
     this.data = data;
     this.chartHeight = 50;
     this.render();
-    this.initEventListeners();
   }
 
   render() {
@@ -40,10 +39,6 @@ export default class ColumnChart {
     }
     return '';
 
-  }
-
-  initEventListeners() {
-    // NOTE: в данном методе добавляем обработчики событий, если они есть
   }
 
   update(data) {
