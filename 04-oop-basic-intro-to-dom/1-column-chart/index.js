@@ -10,21 +10,18 @@ export default class ColumnChart {
   render() {
     const element = document.createElement('div'); // (*)
 
-    let html = `<div class="column-chart" style="--chart-height: 50">`
+    const html = `<div class="${this.data.data && this.data.data.length ? 'wrapper' : 'column-chart_loading'}">`
+      + `<div class="column-chart" style="--chart-height: 50">`
       + `<div class="column-chart__title">Total ${this.data.label}`
       + ((this.data.link) ? `<a href="${this.data.link}" class="column-chart__link">View all</a>` : '')
-      + `</div>`
+      + `</div></div>`
       + `<div class="column-chart__container">`
       + `<div data-element="header" class="column-chart__header">${this.data.formatHeading ? this.data.formatHeading(this.data.value) : this.data.value}</div>`
       + `<div data-element="body" class="column-chart__chart">`
       + this.getDataHtml()
       + `</div></div></div>`;
 
-    element.innerHTML = `
-          <div class="${this.data.data && this.data.data.length ? 'wrapper' : 'column-chart_loading'}">
-            ${html}
-          </div>
-        `;
+    element.innerHTML = html;
 
     // NOTE: в этой строке мы избавляемся от обертки-пустышки в виде `div`
     // который мы создали на строке (*)
@@ -63,9 +60,3 @@ export default class ColumnChart {
     // NOTE: удаляем обработчики событий, если они есть
   }
 }
-
-// const columnChart = new ColumnChart();
-
-// const element = document.getElementById('root');
-
-// element.append(columnChart.element);
